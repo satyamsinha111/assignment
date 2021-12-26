@@ -1,0 +1,56 @@
+<div class="row main-container">
+  <div class="col-5">
+    <div class="card p-4 mt-4 form-container">
+      <div class="form-header py-2">
+        <h2
+          class="font-weight-bold mb-0 text-secondary"
+          style="letter-spacing: 2px"
+        >
+          WELCOME TO LOGIN
+        </h2>
+      </div>
+      <hr />
+      <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="mobile" class="text-secondary">Mobile</label>
+          <input
+            [type]="'number'"
+            [class]="'form-control'"
+            [id]="'mobile'"
+            [placeholder]="'Enter mobile number'"
+            formControlName="mobile"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="mobile.invalid && mobile.touched"
+          >
+            Please provide a valid mobile number.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="text-secondary">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="password.invalid && password.touched"
+          >
+            Password should be atleast contain 6 characters.
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-block btn-danger"
+          [disabled]="!loginFormGroup.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

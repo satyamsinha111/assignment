@@ -1,0 +1,23 @@
+<app-header></app-header> <app-drawer></app-drawer>
+<div class="main-content p-4">
+  <div class="header">
+    <h1 class="font-weight-bold" style="letter-spacing: 2px">Posts</h1>
+    <hr />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-4 mb-1"
+        *ngFor="let post of posts"
+        style="cursor: pointer"
+        (click)="goToPostDetail(post.id)"
+      >
+        <div class="card p-4 posts">
+          <span class="font-weight-bold">
+            {{ post.title }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<app-header></app-header> <app-drawer></app-drawer>
+<div class="main-content p-4">
+  <div class="header">
+    <h1 class="font-weight-bold" style="letter-spacing: 2px">Photo Album</h1>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search photos"
+        [(ngModel)]="searchKey"
+        (input)="searchPhotos($event)"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="refresh()"
+        >
+          <i class="fa fa-refresh" aria-hidden="true"></i> Refresh
+        </button>
+      </div>
+      <ul class="list-group autocomplete" *ngIf="searchDropdown.length > 0">
+        <li
+          class="list-group-item"
+          *ngFor="let search of searchDropdown"
+          (click)="searchPhoto(search)"
+          style="cursor: pointer"
+        >
+          <img
+            class="autocomplete-img"
+            [src]="search.thumbnailUrl"
+            alt=""
+            srcset=""
+          />
+          {{ search.title }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-4" *ngFor="let photo of photos">
+      <div class="card mb-2 photos">
+        <img
+          class="card-img-top"
+          [src]="photo.thumbnailUrl"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            {{ photo.title }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
